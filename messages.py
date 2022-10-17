@@ -81,7 +81,6 @@ def insert_message_into_db(db, msg):
         if h['name'] in ('From', 'date', 'Date', 'Subject', 'To'):
             insert[h['name'].lower()] = h['value']
 
-    print(insert)
     insert['date'] = email.utils.parsedate_to_datetime(insert['date']).isoformat(sep=' ')
 
     db["messages"].insert(insert, pk="id")
